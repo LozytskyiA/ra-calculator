@@ -1,0 +1,5 @@
+.expo
+.vscode
+
+# Dependency directories
+node_modules/
