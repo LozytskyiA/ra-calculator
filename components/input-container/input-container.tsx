@@ -3,8 +3,7 @@ import { StyleSheet, View } from 'react-native'
 
 import { NumberButton } from '../number-button/number-button';
 
-import { BUTTONS } from '../../constants/calculator';
-
+import { calculator, colors } from '../../constants/calculator';
 interface IInputContainer {
   handleInput: (value: string) => void
 }
@@ -15,23 +14,23 @@ export const InputContainer = (props: IInputContainer) => {
     switch (className) {
       case 'bg':
         if (btnIndex === 2 && index === 4 || btnIndex === 3 ) {
-          return '#ff9500';
+          return colors.ORANGE;
         } else if ([0, 1, 2].includes(btnIndex) && index === 0) {
-          return '#a3a3a4'
+          return colors.GRAY;
         } else {
-            return '#363636'
+            return colors.DARK_GRAY;
         }
       case 'width':
         if (btnIndex === 0 && index === 4){
-          return 0.40
+          return calculator.BIG_BTN
         } else {
-          return 0.18
+          return calculator.SMALL_BTN
         }
       }
     }
 
   const renderButtons = () => {
-    return BUTTONS.map((buttonRows, index) => {
+    return calculator.BUTTONS.map((buttonRows, index) => {
       const rowItem = buttonRows.map((buttons, buttonIndex) => {
         return <NumberButton
           key={buttons + `${buttonIndex}`}
@@ -59,7 +58,7 @@ export const InputContainer = (props: IInputContainer) => {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    backgroundColor: '#000000',
+    backgroundColor: colors.CALCULATOR_BG,
     justifyContent: 'flex-end',
     paddingBottom: 30
   },
